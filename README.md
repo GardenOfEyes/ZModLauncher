@@ -85,4 +85,12 @@ The ```ModInfoUri``` property defines a web link to an external resource, such a
 
 ![image](https://user-images.githubusercontent.com/98064221/210601644-10a9b5ed-2582-4625-8bd5-c77f5303b415.png)
 
-# To Be Continued...
+#
+
+Every mod folder is placed in their associated game folder in the root folder of the launcher client in Dropbox. For a game to display an image for its item card in the launcher, simply place an image file (supported formats are JPG, JPEG, BMP, GIF, PNG, and WEBP) in its associated game folder. This holds true for mod folders as well. To display an image for a mod, simply place an image file in its respective mod folder.
+
+# Integrity Checks
+
+Sometimes, it is often the case that a given game's file/folder state needs to be adjusted to retain its integrity before beginning to install mods for that game. An integrity check is performed by a separate executable file, called an integrity checker, which is then placed in a game's folder in Dropbox. The filename of the integrity checker is required to contain "integritychecker" for it to be recognized by the launcher, otherwise it is recognized as a shared toggle macro.
+
+When the game's item card is clicked in the launcher for the first time, the launcher will download the game's associated integrity checker to the game's installation folder and execute it to perform the necessary integrity check. Then, the launcher automatically deletes the integrity checker after it has been run, as it is no longer needed again unless the native.manifest file for the launcher is deleted, or if the value for the ```HasRunIntegrityCheck``` property for the associated game in the manifest file is set to false, in which case the integrity check will run once more when the item card is clicked.
