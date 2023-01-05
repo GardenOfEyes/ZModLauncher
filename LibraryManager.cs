@@ -154,7 +154,7 @@ public class LibraryManager
                         mod.IsExtracting = true;
                         mod.IsWaiting = false;
                         await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
-                        mod.IsExtracted = ExtractToDirectory(archive, mod.IsLaunchable && mod.IsUpdated ? FocusedGame.LocalPath : mod.LocalPath, true);
+                        mod.IsExtracted = ExtractToDirectory(archive, mod.IsLaunchable ? FocusedGame.LocalPath : mod.LocalPath, true);
                         if (mod.IsExtracted) continue;
                         mod.IsWaiting = true;
                         await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
@@ -352,7 +352,7 @@ public class LibraryManager
             mod.UpdateFiles = mod.FilterValidUpdateFiles(mod.UpdateFiles);
             foreach (string updateFilePath in mod.UpdateFiles)
             {
-                var localPath = $"{mod.LocalPath}\\{Path.GetFileNameWithoutExtension(updateFilePath)}";
+                var localPath = $"{FocusedGame.LocalPath}\\{Path.GetFileNameWithoutExtension(updateFilePath)}";
                 mod.InstalledUpdates = mod.UpdateFiles.IndexOf(updateFilePath) + 1;
                 card = await DownloadModFileAndUpdateCardStatus(progressCard, mod, updateFilePath, localPath);
                 if (Directory.Exists(localPath)) Directory.Delete(localPath, true);

@@ -1,14 +1,14 @@
 {
-	"DropboxRefreshToken": "z8_qi0LKn38AAAAAAAAAAWr9mxKxht5-OzoarV1mG2c8hKvLSlZFfoWSaxWKF7KY",
-	"DropboxClientId": "i9bdjxvvgaf8uj8",
-	"DropboxClientSecret": "taf9re4y8c0nwmc",
-	"PatreonClientId": "",
-	"PatreonClientSecret": "",
-	"PatreonCreatorUrl": "",
-	"PatreonRedirectUri": "",
-	"YouTubeResourceLink": "",
-	"TwitterResourceLink": "",
+	"DropboxRefreshToken": "FhCrkHA9IjgAAAAAAAAAAQ_CNLw--_ZEcQwVChhtjG9HoaURs4-aIcP1Wb1o9Hwk",
+	"DropboxClientId": "y32c4q35n3b06a3",
+	"DropboxClientSecret": "7pat6t8tg3zv4wf",
+	"PatreonClientId": "gWaEjFYx7DSBapNzDjFOOYu_U4arZpw4rzcF6eOdlfIk-dUBXKpA362HQgLpFZQh",
+	"PatreonClientSecret": "u6Thd77VEq4sNbco-ZahsBqjuzVY762yrhixlqMQnK664AipI6KWUZS_gq2hJXgA",
+	"PatreonCreatorUrl": "https://www.patreon.com/GardenOfEyes",
+	"PatreonRedirectUri": "https://thegardenofeyes.com",
+	"YouTubeResourceLink": "https://www.youtube.com/@GardenOfEyes",
+	"TwitterResourceLink": "https://twitter.com/eyesgarden",
 	"RoadmapResourceLink": "https://trello.com/b/CUk6PqKu/zmodlauncher",
-	"PrepareLauncherMessage": "PREPARING THE TEST MOD LAUNCHER",
-	"RejectTierId": ""
+	"PrepareLauncherMessage": "PREPARING THE GARDEN OF EYES MOD LAUNCHER",
+	"RejectTierId": "6300254"
 }
