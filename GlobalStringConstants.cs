@@ -41,6 +41,7 @@ public class GlobalStringConstants
     public const string ModsDatabaseNativeMacroKey = "NativeToggleMacroPath";
     public const string ModsDatabaseSharedMacroKey = "IsUsingSharedToggleMacro";
     public const string ModsDatabaseModInfoUriKey = "ModInfoUri";
+    public const string ModsDatabaseDirectDownloadUriKey = "DirectDownloadUri";
     public const string EpicGamesGameNameKey = "DisplayName";
     public const string EpicGamesInstallLocKey = "InstallLocation";
     public const string PatreonRedirectUriKey = "PatreonRedirectUri";

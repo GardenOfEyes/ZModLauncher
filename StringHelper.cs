@@ -6,6 +6,12 @@ namespace ZModLauncher;
 
 public static class StringHelper
 {
+    public static Uri GetAbsoluteUri(string uriStr)
+    {
+        Uri.TryCreate(uriStr, UriKind.Absolute, out Uri uri);
+        return uri;
+    }
+
     public static string GetFileHash(string filePath)
     {
         var hasher = new DropboxContentHasher();

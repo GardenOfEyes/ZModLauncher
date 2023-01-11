@@ -457,12 +457,14 @@ public class LibraryManager
         card.OptionsButton.Visibility = Visibility.Visible;
         var deleteButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(0);
         var modInfoButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(1);
-        var versionInfo = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(2);
+        var directDownloadButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(2);
+        var versionInfo = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(3);
         versionInfo.IsEnabled = false;
         deleteButton.Visibility = mod.IsInstalled ? Visibility.Visible : Visibility.Collapsed;
         modInfoButton.Visibility = mod.ModInfoUri != null ? Visibility.Visible : Visibility.Collapsed;
         versionInfo.Visibility = mod.IsInstalled && mod.Version != null ? Visibility.Visible : Visibility.Collapsed;
         versionInfo.Content = $"Version {mod.Version}";
+        directDownloadButton.Visibility = !mod.IsInstalled && mod.DirectDownloadUri != null ? Visibility.Visible : Visibility.Collapsed;
         if (card.OptionsButton.Items.Cast<ComboBoxItem>().All(i => i.Visibility != Visibility.Visible))
             card.OptionsButton.Visibility = Visibility.Collapsed;
     }
@@ -513,6 +515,9 @@ public class LibraryManager
                     }
                     case 1:
                         Process.Start(mod.ModInfoUri.AbsoluteUri);
+                        break;
+                    case 2:
+                        Process.Start(mod.DirectDownloadUri.AbsoluteUri);
                         break;
                 }
                 await ResetModCardOptionsButtonSelection(card);
@@ -579,9 +584,10 @@ public class LibraryManager
             }
             if (_modsDbManager.Database == null || mod.Uri == null) return (T)(object)mod;
             JToken modEntry = _modsDbManager.Database.GetValue(mod.Name, StringComparison.OrdinalIgnoreCase);
-            var modInfoUriStr = modEntry?[ModsDatabaseModInfoUriKey]?.ToString();
-            Uri.TryCreate(modInfoUriStr, UriKind.Absolute, out Uri modInfoUri);
+            Uri modInfoUri = GetAbsoluteUri(modEntry?[ModsDatabaseModInfoUriKey]?.ToString());
             if (modInfoUri != null) mod.ModInfoUri = modInfoUri;
+            Uri directDownloadUri = GetAbsoluteUri(modEntry?[ModsDatabaseDirectDownloadUriKey]?.ToString());
+            if (directDownloadUri != null) mod.DirectDownloadUri = directDownloadUri;
             mod.NativeToggleMacroPath = modEntry?[ModsDatabaseNativeMacroKey]?.ToString();
             var execPath = modEntry?[DatabaseExecutableKey]?.ToString();
             if (execPath == null) return (T)(object)mod;

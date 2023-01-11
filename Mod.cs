@@ -12,6 +12,7 @@ namespace ZModLauncher;
 
 public class Mod : LibraryItem
 {
+    public Uri DirectDownloadUri;
     public Game Game;
     public string GameName;
     public int InstalledUpdates;

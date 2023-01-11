@@ -49,7 +49,7 @@
                                     <ImageBrush
                                         ImageSource="{Binding ImageSource, ElementName=This}"
                                         Stretch="UniformToFill"
-                                        Opacity="{Binding ImageOpacity, ElementName=This}"/>
+                                        Opacity="{Binding ImageOpacity, ElementName=This}" />
                                 </Border.Background>
                             </Border>
                             <StackPanel
@@ -78,6 +78,7 @@
                                               MaxDropDownHeight="200" Initialized="OptionsButton_Initialized">
                                         <ComboBoxItem Content="Delete" />
                                         <ComboBoxItem Content="Mod Info" />
+                                        <ComboBoxItem Content="Stuck Download?" />
                                         <ComboBoxItem Content="Version" />
                                     </ComboBox>
 
