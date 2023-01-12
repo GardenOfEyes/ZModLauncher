@@ -34,7 +34,7 @@ public partial class SettingsPage : Page
         InitializeComponent();
         SetResourceLinks();
         IsInvokedFromSignIn();
-        HasLoginInfo();
+        AssertClearButtonsVisibility();
     }
 
     public string YouTubeLink
@@ -65,12 +65,21 @@ public partial class SettingsPage : Page
 
     private void IsInvokedFromSignIn()
     {
-        Collapse(IsPreviousPage(SignInPageName) ? signOutButton : clearLoginInfoButton);
+        if (IsPreviousPage(SignInPageName))
+        {
+            Collapse(signOutButton);
+        }
+        else
+        {
+            Collapse(clearLoginInfoButton);
+            Collapse(clearLauncherCacheButton);
+        }
     }
 
-    private void HasLoginInfo()
+    private void AssertClearButtonsVisibility()
     {
         if (!Directory.Exists(_loginInfoFolderPath)) Collapse(clearLoginInfoButton);
+        if (!File.Exists(NativeManifest.FilePath)) Collapse(clearLauncherCacheButton);
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -94,15 +103,33 @@ public partial class SettingsPage : Page
         NavigateToPage(SignInPageName);
     }
 
+    private void ClearLauncherResource(string resourcePath)
+    {
+        bool isDirectory = File.GetAttributes(resourcePath).HasFlag(FileAttributes.Directory);
+        switch (isDirectory)
+        {
+            case true when !Directory.Exists(resourcePath):
+            case false when !File.Exists(resourcePath):
+                ShowErrorDialog(LauncherResourceClearError);
+                AssertClearButtonsVisibility();
+                return;
+            case true:
+                Directory.Delete(resourcePath, true);
+                break;
+            default:
+                File.Delete(resourcePath);
+                break;
+        }
+        AssertClearButtonsVisibility();
+    }
+
     private void ClearLoginInfoButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!Directory.Exists(_loginInfoFolderPath))
-        {
-            ShowErrorDialog(LoginInfoClearError);
-            HasLoginInfo();
-            return;
-        }
-        Directory.Delete(_loginInfoFolderPath, true);
-        HasLoginInfo();
+        ClearLauncherResource(_loginInfoFolderPath);
+    }
+
+    private void ClearLauncherCacheButton_Click(object sender, RoutedEventArgs e)
+    {
+        ClearLauncherResource(NativeManifest.FilePath);
     }
 }

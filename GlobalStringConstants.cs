@@ -61,7 +61,7 @@ public class GlobalStringConstants
     public const string AppPermissionsError = "The launcher does not appear to be configured correctly, ensure that you have Microsoft Edge installed.";
     public const string ZipAccessError = "The mod's archive is being used by another process, the download will attempt to re-queue.";
     public const string NotEnoughSpaceError = "There is not enough space to download/extract the mod, please try again later.";
-    public const string LoginInfoClearError = "There is no login information available for the current user.";
+    public const string LauncherResourceClearError = "The requested launcher resource could not be cleared.";
     public const string InternetConnectionError = "A network connection could not be established to check for launcher updates, do you want to retry?";
     public const string ZipFormatError = "The mod's archive was delivered in an incorrect format, please have the developers re-upload it.";
     public const string GameExecutableError = "The game's executable or online database could not be read.";

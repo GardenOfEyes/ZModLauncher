@@ -309,6 +309,18 @@
                     Style="{StaticResource SideNavigationBasicMenuButtonsStyle}" Click="ClearLoginInfoButton_Click" />
 
                 <attachedProperties:BasicMenuButton
+                    Content="Clear Launcher Cache"
+                    x:Name="clearLauncherCacheButton"
+                    Icon="{StaticResource ClearLauncherCacheButton}"
+                    IconWidth="23"
+                    HorizontalAlignment="Left"
+                    HorizontalContentAlignment="Left"
+                    Width="230"
+                    Height="50"
+                    Margin="36, 0"
+                    Style="{StaticResource SideNavigationBasicMenuButtonsStyle}" Click="ClearLauncherCacheButton_Click" />
+
+                <attachedProperties:BasicMenuButton
                     Content="Sign Out"
                     x:Name="signOutButton"
                     Icon="{StaticResource SignOutButton}"
