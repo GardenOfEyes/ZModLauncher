@@ -147,8 +147,18 @@
                                 <RotateTransform x:Name="noFreeze" />
                             </attachedProperties:BasicMenuButton.RenderTransform>
                         </attachedProperties:BasicMenuButton>
+                        <attachedProperties:BasicMenuButton x:Name="installLocalModButton"
+                                                            Margin="12, 0, 0, 0"
+                                                            RenderTransformOrigin="0.5, 0.5"
+                                                            HorizontalAlignment="Right"
+                                                            HorizontalContentAlignment="Left"
+                                                            Width="25"
+                                                            Height="25"
+                                                            IconWidth="25"
+                                                            Icon="{StaticResource InstallLocalModButton}"
+                                                            Style="{StaticResource SideNavigationBasicMenuButtonsStyle}" />
                         <attachedProperties:BasicMenuButton x:Name="playButton"
-                                                            Margin="12, 0"
+                                                            Margin="8, 0"
                                                             HorizontalAlignment="Left"
                                                             HorizontalContentAlignment="Left"
                                                             Width="155"

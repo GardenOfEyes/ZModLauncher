@@ -688,11 +688,13 @@ public class LibraryManager
         {
             Show(_storePage.backButton);
             Show(_storePage.playButton);
+            Show(_storePage.installLocalModButton);
         }
         else
         {
             Collapse(_storePage.backButton);
             Collapse(_storePage.playButton);
+            Collapse(_storePage.installLocalModButton);
         }
     }
 
