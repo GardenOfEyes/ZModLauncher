@@ -58,6 +58,7 @@ public class GlobalStringConstants
     public const string RejectTierIdKey = "RejectTierId";
     public const string GameInstallFolderPrompt = "Select the game's installation folder:";
     public const string DeleteModConfirmation = "Are you sure you want to delete this mod?";
+    public const string ClearLauncherCacheConfirmation = "Are you sure you want to clear the cache? It is not recommended unless absolutely necessary.";
     public const string AppPermissionsError = "The launcher does not appear to be configured correctly, ensure that you have Microsoft Edge installed.";
     public const string ZipAccessError = "The mod's archive is being used by another process, the download will attempt to re-queue.";
     public const string NotEnoughSpaceError = "There is not enough space to download/extract the mod, please try again later.";

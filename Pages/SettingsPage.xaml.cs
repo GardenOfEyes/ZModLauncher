@@ -68,11 +68,11 @@ public partial class SettingsPage : Page
         if (IsPreviousPage(SignInPageName))
         {
             Collapse(signOutButton);
+            Collapse(clearLauncherCacheButton);
         }
         else
         {
             Collapse(clearLoginInfoButton);
-            Collapse(clearLauncherCacheButton);
         }
     }
 
@@ -130,6 +130,7 @@ public partial class SettingsPage : Page
 
     private void ClearLauncherCacheButton_Click(object sender, RoutedEventArgs e)
     {
+        if (ShowQuestionDialog(ClearLauncherCacheConfirmation) != MessageBoxResult.Yes) return;
         ClearLauncherResource(NativeManifest.FilePath);
     }
 }
