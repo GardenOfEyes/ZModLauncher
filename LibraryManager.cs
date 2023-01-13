@@ -322,7 +322,7 @@ public class LibraryManager
         UpdateItemCardStatus(newCard, item);
         if (item is Game or Mod { IsReconnecting: false, IsBusy: false, IsToggling: false })
             AddItemCardClickEvent(newCard, item);
-        if (item is Mod { IsQueuing: false, IsExtracting: false, IsToggling: false }) AddItemCardOptionsButtonEvents(newCard, item);
+        if (item is Mod { IsUpdated: true, IsQueuing: false, IsExtracting: false, IsToggling: false }) AddItemCardOptionsButtonEvents(newCard, item);
         newCard = SetItemCardImageAndAddToLibrary(newCard, item);
         ReplaceItemCardWith(card, newCard);
         return newCard;
