@@ -56,7 +56,10 @@ public class GlobalStringConstants
     public const string RoadmapResourceLinkKey = "RoadmapResourceLink";
     public const string PrepareLauncherMessageLinkKey = "PrepareLauncherMessage";
     public const string RejectTierIdKey = "RejectTierId";
+    public const string OpenZipFileFilter = "ZIP File (*.zip)|*.zip";
+    public const string InstallLocalModPrompt = "Select a local mod zip file to install...";
     public const string GameInstallFolderPrompt = "Select the game's installation folder:";
+    public const string InstallLocalModSuccessMessage = "The local mod has successfully been installed!";
     public const string DeleteModConfirmation = "Are you sure you want to delete this mod?";
     public const string ClearLauncherCacheConfirmation = "Are you sure you want to clear the cache? It is not recommended unless absolutely necessary.";
     public const string AppPermissionsError = "The launcher does not appear to be configured correctly, ensure that you have Microsoft Edge installed.";

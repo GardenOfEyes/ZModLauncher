@@ -156,7 +156,7 @@
                                                             Height="25"
                                                             IconWidth="25"
                                                             Icon="{StaticResource InstallLocalModButton}"
-                                                            Style="{StaticResource SideNavigationBasicMenuButtonsStyle}" />
+                                                            Style="{StaticResource SideNavigationBasicMenuButtonsStyle}" Click="InstallLocalModButton_Click" />
                         <attachedProperties:BasicMenuButton x:Name="playButton"
                                                             Margin="8, 0"
                                                             HorizontalAlignment="Left"

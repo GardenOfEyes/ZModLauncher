@@ -77,6 +77,44 @@ public class LibraryManager
         return card;
     }
 
+    public async Task InstallLocalMod()
+    {
+        var dialog = new OpenFileDialog { Title = InstallLocalModPrompt, Filter = OpenZipFileFilter };
+        if (dialog.ShowDialog() != DialogResult.OK) return;
+        var mod = new Mod { LocalPath = $"{Directory.GetParent(dialog.FileName)}\\{Path.GetFileNameWithoutExtension(dialog.FileName)}", IsLaunchable = true };
+        await EnterLoadingLibraryState();
+        await ExtractModAndUpdateCardStatus(new LibraryItemCard(), mod, dialog.FileName);
+        ExitLoadingLibraryState();
+        await RefreshLibrary();
+        ShowInformationDialog(InstallLocalModSuccessMessage);
+    }
+
+    private async Task<LibraryItemCard> ExtractModAndUpdateCardStatus(LibraryItemCard card, Mod mod, string modFileZipPath)
+    {
+        await Task.Run(async () =>
+        {
+            using (ZipArchive archive = ZipFile.OpenRead(modFileZipPath))
+            {
+                while (!mod.IsExtracted)
+                {
+                    mod.IsExtracting = true;
+                    mod.IsWaiting = false;
+                    await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
+                    mod.IsExtracted = ExtractToDirectory(archive, mod.IsLaunchable ? FocusedGame.LocalPath : mod.LocalPath, true);
+                    if (mod.IsExtracted) continue;
+                    mod.IsWaiting = true;
+                    await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
+                    await Task.Delay(4000);
+                }
+                mod.IsExtracted = false;
+            }
+            if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
+            mod.IsExtracting = false;
+            return card;
+        });
+        return card;
+    }
+
     private async Task<LibraryItemCard> DownloadModFileAndUpdateCardStatus(LibraryItemCard card, Mod mod, string uri, string localPath)
     {
         mod.IsBusy = true;
@@ -147,23 +185,7 @@ public class LibraryManager
                 } while (stream.CanRead && streamBufferLength > 0);
                 if (resumeTask) continue;
                 fileStream.Close();
-                using (ZipArchive archive = ZipFile.OpenRead(modFileZipPath))
-                {
-                    while (!mod.IsExtracted)
-                    {
-                        mod.IsExtracting = true;
-                        mod.IsWaiting = false;
-                        await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
-                        mod.IsExtracted = ExtractToDirectory(archive, mod.IsLaunchable ? FocusedGame.LocalPath : mod.LocalPath, true);
-                        if (mod.IsExtracted) continue;
-                        mod.IsWaiting = true;
-                        await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
-                        await Task.Delay(4000);
-                    }
-                    mod.IsExtracted = false;
-                }
-                if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
-                mod.IsExtracting = false;
+                card = await ExtractModAndUpdateCardStatus(card, mod, modFileZipPath);
                 await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
                 mod.IsBusy = false;
                 if (mod.IsUpdated) mod.Configure(FocusedGame);
@@ -318,12 +340,14 @@ public class LibraryManager
     {
         Disable(_storePage.backButton);
         Disable(_storePage.refreshButton);
+        Disable(_storePage.installLocalModButton);
     }
 
     private void EnableNavigationControls()
     {
         Enable(_storePage.backButton);
         Enable(_storePage.refreshButton);
+        Enable(_storePage.installLocalModButton);
     }
 
     private LibraryItemCard PostInstallOrUpdateCleanup(LibraryItemCard card, Mod mod)

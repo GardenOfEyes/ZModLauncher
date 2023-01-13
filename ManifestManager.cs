@@ -71,8 +71,8 @@ public class ManifestManager
     public async Task ReadAllManifests(Game game)
     {
         if (_gamesDbManager.Database == null) await _gamesDbManager.ReadDatabase(GamesDbFileName);
-        ReadManifestFiles<NativeManifest>(game);
         ReadManifestFiles<SteamManifest>(game);
         ReadManifestFiles<EpicGamesManifest>(game);
+        ReadManifestFiles<NativeManifest>(game);
     }
 }

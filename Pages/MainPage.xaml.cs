@@ -95,4 +95,9 @@ public partial class StorePage : Page
     {
         HideModFilters();
     }
+
+    private async void InstallLocalModButton_Click(object sender, RoutedEventArgs e)
+    {
+        await libraryManager.InstallLocalMod();
+    }
 }
