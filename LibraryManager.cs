@@ -110,6 +110,7 @@ public class LibraryManager
                 }
                 mod.IsExtracted = false;
             }
+            if (File.Exists(modFileZipPath) && modFileZipPath.Contains(FocusedGame.LocalPath)) File.Delete(modFileZipPath);
             mod.IsExtracting = false;
             return card;
         });
@@ -187,7 +188,6 @@ public class LibraryManager
                 if (resumeTask) continue;
                 fileStream.Close();
                 card = await ExtractModAndUpdateCardStatus(card, mod, modFileZipPath);
-                if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
                 await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
                 mod.IsBusy = false;
                 if (mod.IsUpdated) mod.Configure(FocusedGame);
@@ -315,7 +315,7 @@ public class LibraryManager
         if (IsLibraryEmpty()) return card;
         LibraryItemCard newCard = card.Clone();
         UpdateItemCardStatus(newCard, item);
-        if (item is Game or Mod { IsReconnecting: false, IsBusy: false, IsToggling: false })
+        if (item is Game or Mod { IsReconnecting: false, IsToggling: false })
             AddItemCardClickEvent(newCard, item);
         newCard = SetItemCardImageAndAddToLibrary(newCard, item);
         ReplaceItemCardWith(card, newCard);
