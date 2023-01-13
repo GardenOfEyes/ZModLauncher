@@ -83,8 +83,10 @@ public class LibraryManager
         if (dialog.ShowDialog() != DialogResult.OK) return;
         var mod = new Mod { LocalPath = $"{Directory.GetParent(dialog.FileName)}\\{Path.GetFileNameWithoutExtension(dialog.FileName)}", IsLaunchable = true };
         await EnterLoadingLibraryState();
+        Show(_storePage.installingLocalModMessage);
         await ExtractModAndUpdateCardStatus(new LibraryItemCard(), mod, dialog.FileName);
         ExitLoadingLibraryState();
+        Collapse(_storePage.installingLocalModMessage);
         await RefreshLibrary();
         ShowInformationDialog(InstallLocalModSuccessMessage);
     }
@@ -108,7 +110,6 @@ public class LibraryManager
                 }
                 mod.IsExtracted = false;
             }
-            if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
             mod.IsExtracting = false;
             return card;
         });
@@ -186,6 +187,7 @@ public class LibraryManager
                 if (resumeTask) continue;
                 fileStream.Close();
                 card = await ExtractModAndUpdateCardStatus(card, mod, modFileZipPath);
+                if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
                 await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
                 mod.IsBusy = false;
                 if (mod.IsUpdated) mod.Configure(FocusedGame);

@@ -98,7 +98,7 @@ public class Mod : LibraryItem
     public void Configure(Game game)
     {
         Game = game;
-        IsInstalled = Directory.Exists(LocalPath) && !File.Exists($"{LocalPath}.zip");
+        IsInstalled = Directory.Exists(LocalPath);
         if (!IsInstalled) return;
         NativeManifest.WriteMod(this, false);
         CheckForUpdates();

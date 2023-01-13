@@ -92,6 +92,17 @@
                 IsIndeterminate="True"
                 Style="{StaticResource CircularProgressBar}" Visibility="Visible" />
 
+            <TextBlock x:Name="installingLocalModMessage"
+                       Grid.Column="1"
+                       Margin="0, 120, 0, 0"
+                       FontFamily="Brutal Type"
+                       FontWeight="Normal"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource CaptionFontBrush}"
+                       Text="Installing, please wait..." FontSize="18"
+                       Visibility="Collapsed" />
+
             <Grid
                 Grid.Column="1"
                 Margin="34">
@@ -246,6 +257,7 @@
                                 Margin="0,0,20,0"
                                 Title="Fortnite" />
                         </WrapPanel>
+
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
