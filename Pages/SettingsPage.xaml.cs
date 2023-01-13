@@ -27,6 +27,10 @@ public partial class SettingsPage : Page
     public static readonly DependencyProperty RoadmapLinkProperty =
         DependencyProperty.Register("RoadmapLink", typeof(string), typeof(SettingsPage));
 
+    // Using a DependencyProperty as the backing store for FAQLink.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty FAQLinkProperty =
+        DependencyProperty.Register("FAQLink", typeof(string), typeof(SettingsPage));
+
     private static readonly string _loginInfoFolderPath = $"{NativeManifest.AppRootPath}\\{NativeManifest.ExecutableAppName}.exe.WebView2";
 
     public SettingsPage()
@@ -55,12 +59,19 @@ public partial class SettingsPage : Page
         set => SetValue(RoadmapLinkProperty, value);
     }
 
+    public string FAQLink
+    {
+        get => (string)GetValue(FAQLinkProperty);
+        set => SetValue(FAQLinkProperty, value);
+    }
+
     private void SetResourceLinks()
     {
         var configManager = new LauncherConfigManager();
         YouTubeLink = configManager.LauncherConfig[YouTubeResourceLinkKey]?.ToString();
         TwitterLink = configManager.LauncherConfig[TwitterResourceLinkKey]?.ToString();
         RoadmapLink = configManager.LauncherConfig[RoadmapResourceLinkKey]?.ToString();
+        FAQLink = configManager.LauncherConfig[FAQResourceLinkKey]?.ToString();
     }
 
     private void IsInvokedFromSignIn()

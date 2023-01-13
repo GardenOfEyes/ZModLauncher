@@ -54,6 +54,7 @@ public class GlobalStringConstants
     public const string YouTubeResourceLinkKey = "YouTubeResourceLink";
     public const string TwitterResourceLinkKey = "TwitterResourceLink";
     public const string RoadmapResourceLinkKey = "RoadmapResourceLink";
+    public const string FAQResourceLinkKey = "FAQResourceLink";
     public const string PrepareLauncherMessageLinkKey = "PrepareLauncherMessage";
     public const string RejectTierIdKey = "RejectTierId";
     public const string OpenZipFileFilter = "ZIP File (*.zip)|*.zip";

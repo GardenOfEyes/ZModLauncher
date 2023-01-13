@@ -404,6 +404,15 @@
                     </Hyperlink>
                 </TextBlock>
 
+                <TextBlock
+                    Margin="0,25,0,0">
+                    <Hyperlink
+                        RequestNavigate="Hyperlink_OnRequestNavigate"
+                        NavigateUri="{Binding FAQLink, ElementName=This}">
+                        Frequently Asked Questions
+                    </Hyperlink>
+                </TextBlock>
+
                 <Separator
                     Margin="0,34"
                     Background="#363636" />
