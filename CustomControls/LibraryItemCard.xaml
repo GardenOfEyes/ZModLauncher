@@ -79,6 +79,7 @@
                                         <ComboBoxItem Content="Delete" />
                                         <ComboBoxItem Content="Mod Info" />
                                         <ComboBoxItem Content="Stuck Download?" />
+                                        <ComboBoxItem Content="Cancel Download" />
                                         <ComboBoxItem Content="Version" />
                                     </ComboBox>
 

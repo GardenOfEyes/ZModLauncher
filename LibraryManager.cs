@@ -137,7 +137,6 @@ public class LibraryManager
                     continue;
                 }
                 Stream stream = await response.GetContentAsStreamAsync();
-                if (!Directory.Exists(localPath)) Directory.CreateDirectory(localPath);
                 var modFileZipPath = $"{localPath}.zip";
                 FileStream fileStream;
                 try
@@ -154,10 +153,15 @@ public class LibraryManager
                 var resumeTask = false;
                 do
                 {
-                    if (!IsCurrentPage(MainPageName) && !IsCurrentPage(SettingsPageName))
+                    if (mod.IsCancellingDownload || !IsCurrentPage(MainPageName) && !IsCurrentPage(SettingsPageName))
                     {
                         fileStream.Close();
                         stream.Close();
+                        if (!mod.IsCancellingDownload) return card;
+                        if (File.Exists(modFileZipPath)) File.Delete(modFileZipPath);
+                        mod.IsBusy = false;
+                        await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
+                        mod.IsCancellingDownload = false;
                         return card;
                     }
                     var streamBuffer = new byte[1024];
@@ -183,10 +187,11 @@ public class LibraryManager
                     mod.Progress = (int)((double)fileStream.Length / response.Response.Size * 100);
                     if (mod.Progress == prevProgress) continue;
                     prevProgress = mod.Progress;
-                    card = await UpdateItemCardProgress(card, mod);
+                    if (!mod.IsOptionsButtonActivated) card = await UpdateItemCardProgress(card, mod);
                 } while (stream.CanRead && streamBufferLength > 0);
                 if (resumeTask) continue;
                 fileStream.Close();
+                if (!Directory.Exists(localPath)) Directory.CreateDirectory(localPath);
                 card = await ExtractModAndUpdateCardStatus(card, mod, modFileZipPath);
                 await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
                 mod.IsBusy = false;
@@ -315,8 +320,9 @@ public class LibraryManager
         if (IsLibraryEmpty()) return card;
         LibraryItemCard newCard = card.Clone();
         UpdateItemCardStatus(newCard, item);
-        if (item is Game or Mod { IsReconnecting: false, IsToggling: false })
+        if (item is Game or Mod { IsReconnecting: false, IsBusy: false, IsToggling: false })
             AddItemCardClickEvent(newCard, item);
+        if (item is Mod { IsQueuing: false, IsExtracting: false, IsToggling: false }) AddItemCardOptionsButtonEvents(newCard, item);
         newCard = SetItemCardImageAndAddToLibrary(newCard, item);
         ReplaceItemCardWith(card, newCard);
         return newCard;
@@ -484,13 +490,15 @@ public class LibraryManager
         var deleteButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(0);
         var modInfoButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(1);
         var directDownloadButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(2);
-        var versionInfo = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(3);
+        var cancelDownloadButton = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(3);
+        var versionInfo = (ComboBoxItem)card.OptionsButton.Items.GetItemAt(4);
         versionInfo.IsEnabled = false;
         deleteButton.Visibility = mod.IsInstalled ? Visibility.Visible : Visibility.Collapsed;
         modInfoButton.Visibility = mod.ModInfoUri != null ? Visibility.Visible : Visibility.Collapsed;
         versionInfo.Visibility = mod.IsInstalled && mod.Version != null ? Visibility.Visible : Visibility.Collapsed;
         versionInfo.Content = $"Version {mod.Version}";
         directDownloadButton.Visibility = !mod.IsInstalled && mod.DirectDownloadUri != null ? Visibility.Visible : Visibility.Collapsed;
+        cancelDownloadButton.Visibility = !mod.IsInstalled && mod.IsBusy ? Visibility.Visible : Visibility.Collapsed;
         if (card.OptionsButton.Items.Cast<ComboBoxItem>().All(i => i.Visibility != Visibility.Visible))
             card.OptionsButton.Visibility = Visibility.Collapsed;
     }
@@ -512,10 +520,16 @@ public class LibraryManager
                 _ => card
             };
         };
+    }
+
+    private void AddItemCardOptionsButtonEvents(LibraryItemCard card, LibraryItem item)
+    {
         card.Loaded += async (_, _) =>
         {
             if (item is not Mod mod) return;
             await SetModCardOptionsButtonItemVisibilityStates(card, mod);
+            card.OptionsButton.DropDownOpened += (_, _) => { mod.IsOptionsButtonActivated = true; };
+            card.OptionsButton.DropDownClosed += (_, _) => { mod.IsOptionsButtonActivated = false; };
             card.OptionsButton.SelectionChanged += async (_, _) =>
             {
                 switch (card.OptionsButton.SelectedIndex)
@@ -544,6 +558,9 @@ public class LibraryManager
                         break;
                     case 2:
                         Process.Start(mod.DirectDownloadUri.AbsoluteUri);
+                        break;
+                    case 3:
+                        mod.IsCancellingDownload = true;
                         break;
                 }
                 await ResetModCardOptionsButtonSelection(card);
@@ -575,6 +592,7 @@ public class LibraryManager
         if (IsLibraryEmpty()) Collapse(_storePage.emptyLibraryMessage);
         UpdateItemCardStatus(card, item);
         AddItemCardClickEvent(card, item);
+        AddItemCardOptionsButtonEvents(card, item);
         card = SetItemCardImageAndAddToLibrary(card, item);
         _storePage.library.Children.Add(card);
     }

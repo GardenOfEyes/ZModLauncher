@@ -17,10 +17,12 @@ public class Mod : LibraryItem
     public string GameName;
     public int InstalledUpdates;
     public bool IsBusy;
+    public bool IsCancellingDownload;
     public bool IsEnabled;
     public bool IsExtracted;
     public bool IsExtracting;
     public bool IsLaunchable;
+    public bool IsOptionsButtonActivated;
     public bool IsQueuing;
     public bool IsReconnecting;
     public bool IsToggling;
