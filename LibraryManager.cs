@@ -403,7 +403,8 @@ public class LibraryManager
                 if (baseModVersion != null) mod.Version = baseModVersion;
                 NativeManifest.DeleteMod(mod);
             }
-            card = await DownloadModFileAndUpdateCardStatus(progressCard, mod, mod.Uri, mod.LocalPath);
+            var localPath = $"{FocusedGame.LocalPath}\\{Path.GetFileNameWithoutExtension(mod.LocalPath)}";
+            card = await DownloadModFileAndUpdateCardStatus(progressCard, mod, mod.Uri, localPath);
         }
         card = PostInstallOrUpdateCleanup(card, mod);
         return card;

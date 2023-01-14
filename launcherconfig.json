@@ -1,15 +1,15 @@
 {
-	"DropboxRefreshToken": "FhCrkHA9IjgAAAAAAAAAAQ_CNLw--_ZEcQwVChhtjG9HoaURs4-aIcP1Wb1o9Hwk",
-	"DropboxClientId": "y32c4q35n3b06a3",
-	"DropboxClientSecret": "7pat6t8tg3zv4wf",
-	"PatreonClientId": "gWaEjFYx7DSBapNzDjFOOYu_U4arZpw4rzcF6eOdlfIk-dUBXKpA362HQgLpFZQh",
-	"PatreonClientSecret": "u6Thd77VEq4sNbco-ZahsBqjuzVY762yrhixlqMQnK664AipI6KWUZS_gq2hJXgA",
-	"PatreonCreatorUrl": "https://www.patreon.com/GardenOfEyes",
+	"DropboxRefreshToken": "EP1POLdsjmwAAAAAAAAAAfau_Xenb-WwFHI2Uh5Ffow-A8DW-RJAGEpGQj4Kmxfc",
+	"DropboxClientId": "wuimf9xdqw7qza5",
+	"DropboxClientSecret": "3p03d8kzyl3npgk",
+	"PatreonClientId": "MenZfNuMOanrj2N8Y1DhxLw0VyAh67bUnXJ3JBXmd-Bj5DyS_sD5mm9Lt2dGar1m",
+	"PatreonClientSecret": "p6I5OMO_VG6_NvoFX0QixGP7MstZFg9q4msR5qM3gjxLyQFshEtPrS4PJN24HDdS",
+	"PatreonCreatorUrl": "https://www.patreon.com/OmegaFantasy",
 	"PatreonRedirectUri": "https://thegardenofeyes.com",
-	"YouTubeResourceLink": "https://www.youtube.com/@GardenOfEyes",
-	"TwitterResourceLink": "https://twitter.com/eyesgarden",
+	"YouTubeResourceLink": "https://www.youtube.com/@OmegaFantasy",
+	"TwitterResourceLink": "https://twitter.com/omegafantasy_yt?lang=en",
 	"RoadmapResourceLink": "https://trello.com/b/CUk6PqKu/zmodlauncher",
-	"FAQResourceLink": "https://docs.google.com/document/d/1ahVht0H7uVp9AvAMRE3e9Z9FGCmQzjaJNPNBXL-0sRI/edit?usp=sharing",
-	"PrepareLauncherMessage": "PREPARING THE GARDEN OF EYES MOD LAUNCHER",
-	"RejectTierId": "6300254"
+	"FAQResourceLink": "https://docs.google.com/document/d/1dr37wv6smXlzGNiDD2UDLAFhRhW8Yud7d65rzkO6jz4/edit?usp=sharing",
+	"PrepareLauncherMessage": "PREPARING THE OMEGA FANTASY MOD LAUNCHER",
+	"RejectTierId": "8252689"
 }
