@@ -191,7 +191,6 @@ public class LibraryManager
                 } while (stream.CanRead && streamBufferLength > 0);
                 if (resumeTask) continue;
                 fileStream.Close();
-                if (!Directory.Exists(localPath)) Directory.CreateDirectory(localPath);
                 card = await ExtractModAndUpdateCardStatus(card, mod, modFileZipPath);
                 await RunBackgroundAction(() => card = RefreshItemCard(card, mod));
                 mod.IsBusy = false;
