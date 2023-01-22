@@ -1,16 +1,16 @@
 {
-	"DropboxRefreshToken": "FhCrkHA9IjgAAAAAAAAAAQ_CNLw--_ZEcQwVChhtjG9HoaURs4-aIcP1Wb1o9Hwk",
-	"DropboxClientId": "y32c4q35n3b06a3",
-	"DropboxClientSecret": "7pat6t8tg3zv4wf",
-	"PatreonClientId": "gWaEjFYx7DSBapNzDjFOOYu_U4arZpw4rzcF6eOdlfIk-dUBXKpA362HQgLpFZQh",
-	"PatreonClientSecret": "u6Thd77VEq4sNbco-ZahsBqjuzVY762yrhixlqMQnK664AipI6KWUZS_gq2hJXgA",
-	"PatreonCreatorUrl": "https://www.patreon.com/GardenOfEyes",
+	"DropboxRefreshToken": "9t95V6COu5wAAAAAAAAAAXp061rbEPCUJ9coDcJAKLIoiX1W6HJojRXwuvGiPrCx",
+	"DropboxClientId": "fqk6bdpjui3hj1t",
+	"DropboxClientSecret": "005lz5py655p40n",
+	"PatreonClientId": "",
+	"PatreonClientSecret": "",
+	"PatreonCreatorUrl": "",
 	"PatreonRedirectUri": "https://thegardenofeyes.com",
-	"YouTubeResourceLink": "https://www.youtube.com/@GardenOfEyes",
-	"TwitterResourceLink": "https://twitter.com/eyesgarden",
+	"YouTubeResourceLink": "https://www.youtube.com/@ToastedShoes",
+	"TwitterResourceLink": "https://twitter.com/ToastedShoes",
 	"RoadmapResourceLink": "https://trello.com/b/CUk6PqKu/zmodlauncher",
-	"FAQResourceLink": "https://docs.google.com/document/d/1ahVht0H7uVp9AvAMRE3e9Z9FGCmQzjaJNPNBXL-0sRI/edit?usp=sharing",
-	"PrepareLauncherMessage": "PREPARING THE GARDEN OF EYES MOD LAUNCHER",
-	"RejectTierId": "6300254",
-	"IsLauncherOfflineForMaintenance": true
+	"FAQResourceLink": "",
+	"PrepareLauncherMessage": "PREPARING THE TOASTEDSHOES MOD LAUNCHER",
+	"RejectTierId": "",
+	"IsLauncherOfflineForMaintenance": false
 }

@@ -29,10 +29,11 @@ public class SteamManifest : Manifest
                 {
                     VProperty manifest = VdfConvert.Deserialize(File.ReadAllText(filePath));
                     var name = GetChildValue(manifest, 3).ToString();
+                    var installDirName = GetChildValue(manifest, 5).ToString();
                     if (!IsMatching(name, game.Name)) continue;
                     if (GamesDatabase == null) return;
                     JToken gameEntry = GamesDatabase.GetValue(game.Name, StringComparison.OrdinalIgnoreCase);
-                    ManifestManager.ConfigureGameFromDatabase(game, $"{folderPath}\\common\\{name}\\{gameEntry?[GamesDatabaseLocalPathKey]}", game.Name);
+                    ManifestManager.ConfigureGameFromDatabase(game, $"{folderPath}\\common\\{installDirName}\\{gameEntry?[GamesDatabaseLocalPathKey]}", game.Name);
                     return;
                 }
             }
