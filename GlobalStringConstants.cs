@@ -57,6 +57,7 @@ public class GlobalStringConstants
     public const string FAQResourceLinkKey = "FAQResourceLink";
     public const string PrepareLauncherMessageLinkKey = "PrepareLauncherMessage";
     public const string RejectTierIdKey = "RejectTierId";
+    public const string IsLauncherOfflineForMaintenanceKey = "IsLauncherOfflineForMaintenance";
     public const string OpenZipFileFilter = "ZIP File (*.zip)|*.zip";
     public const string InstallLocalModPrompt = "Select a local mod zip file to install...";
     public const string GameInstallFolderPrompt = "Select the game's installation folder:";
@@ -72,5 +73,6 @@ public class GlobalStringConstants
     public const string GameExecutableError = "The game's executable or online database could not be read.";
     public const string ModExecutableError = "The mod's executable or online database could not be read.";
     public const string LauncherConfigError = "The internal launcher configuration could not be read.";
+    public const string LauncherMaintenanceMessage = "The launcher is currently offline for mandatory maintenance, please try again later.";
     public static readonly string LauncherConfigName = $"{NativeManifest.ActualAppName}.launcherconfig.json";
 }

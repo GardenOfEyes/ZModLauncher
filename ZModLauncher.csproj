@@ -7,7 +7,7 @@
     <ProjectGuid>{7ABB993E-EF57-4A0C-8AC9-53889904C1CE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ZModLauncher</RootNamespace>
-    <AssemblyName>Omega Fantasy Mod Launcher</AssemblyName>
+    <AssemblyName>The Garden of Eyes Mod Launcher</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

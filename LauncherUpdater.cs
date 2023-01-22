@@ -21,6 +21,13 @@ public class LauncherUpdater
 
     public async Task CheckForUpdates()
     {
+        var configManager = new LauncherConfigManager();
+        bool.TryParse(configManager.LauncherConfig[IsLauncherOfflineForMaintenanceKey]?.ToString(), out bool isOffline);
+        if (isOffline)
+        {
+            ShowInformationDialog(LauncherMaintenanceMessage);
+            Environment.Exit(0);
+        }
         while (true)
         {
             var backupLauncherExecutableDir = $"{NativeManifest.AppRootPath}\\launcher_backup";
