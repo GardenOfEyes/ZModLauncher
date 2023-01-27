@@ -40,7 +40,12 @@ public partial class StorePage : Page
 
     private void PlayButton_Click(object sender, RoutedEventArgs e)
     {
-        Process.Start(libraryManager.FocusedGame.ExecutablePath);
+        string launchExecPath = libraryManager.FocusedGame.ExecutablePath;
+        if (libraryManager.FocusedGame.SteamExecPath != null)
+            launchExecPath = libraryManager.FocusedGame.SteamExecPath;
+        else if (libraryManager.FocusedGame.EpicExecPath != null)
+            launchExecPath = libraryManager.FocusedGame.EpicExecPath;
+        Process.Start(launchExecPath);
     }
 
     private void SortByBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

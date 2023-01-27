@@ -37,6 +37,8 @@ public class GlobalStringConstants
     public const string ManifestStatusKey = "Status";
     public const string ManifestVersionKey = "Version";
     public const string GamesDatabaseLocalPathKey = "LocalPath";
+    public const string GamesDatabaseSteamExecPathKey = "SteamExecPath";
+    public const string GamesDatabaseEpicExecPathKey = "EpicExecPath";
     public const string DatabaseExecutableKey = "ExecutablePath";
     public const string ModsDatabaseNativeMacroKey = "NativeToggleMacroPath";
     public const string ModsDatabaseSharedMacroKey = "IsUsingSharedToggleMacro";

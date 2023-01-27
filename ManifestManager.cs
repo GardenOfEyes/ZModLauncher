@@ -25,6 +25,12 @@ public class ManifestManager
         if (localPath.EndsWith("\\")) localPath = localPath.Substring(0, localPath.LastIndexOf('\\'));
         if (!Directory.Exists(localPath)) localPath = localPath.Replace(manifestGameName, manifestGameName.Replace(" ", ""));
         game.LocalPath = localPath;
+        var steamExecPath = gameEntry?[GamesDatabaseSteamExecPathKey]?.ToString();
+        var epicExecPath = gameEntry?[GamesDatabaseEpicExecPathKey]?.ToString();
+        if (game.Provider == typeof(SteamManifest) && steamExecPath != null)
+            game.SteamExecPath = steamExecPath;
+        else if (game.Provider == typeof(EpicGamesManifest) && epicExecPath != null)
+            game.EpicExecPath = epicExecPath;
         var execPath = gameEntry?[DatabaseExecutableKey]?.ToString();
         game.ExecutablePath = $"{game.LocalPath}\\{execPath}";
         game.IsInstalled = File.Exists(game.ExecutablePath);
@@ -35,6 +41,7 @@ public class ManifestManager
     public void ReadManifestFiles<T>(Game game) where T : Manifest, new()
     {
         if (game.LocalPath != null) return;
+        game.Provider = typeof(T) != typeof(NativeManifest) ? typeof(T) : null;
         if (typeof(T) == typeof(SteamManifest))
         {
             _folderPath = $"{Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", "InstallPath", "")}\\steamapps";

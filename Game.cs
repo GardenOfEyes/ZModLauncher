@@ -5,11 +5,14 @@ namespace ZModLauncher;
 
 public class Game : LibraryItem
 {
+    public string EpicExecPath;
     public bool HasRunIntegrityCheck = true;
     public string IntegrityCheckerUri;
+    public Type Provider;
     public string SharedToggleMacroOnlineHash;
     public string SharedToggleMacroPath;
     public string SharedToggleMacroUri;
+    public string SteamExecPath;
 
     public void SetVersionFromExecutable()
     {
