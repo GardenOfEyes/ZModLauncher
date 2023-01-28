@@ -61,6 +61,7 @@
                                                                     Content="Games"
                                                                     Icon="{StaticResource LibraryIcon}"
                                                                     Style="{StaticResource SideNavigationCheckableMenuButtonsStyle}"
+                                                                    IconWidth="27"
                                                                     IsChecked="False" Loaded="GamesMenuButton_Loaded"
                                                                     Checked="LoadGames" />
                         </StackPanel>
@@ -71,7 +72,7 @@
                             <attachedProperties:BasicMenuButton
                                 Content="Settings"
                                 x:Name="BtnSettings"
-                                Icon="{StaticResource SettingsIcon}"
+                                Icon="{StaticResource MainPageSettingsIcon}"
                                 IconWidth="23"
                                 Margin="60, 0"
                                 HorizontalContentAlignment="Right"

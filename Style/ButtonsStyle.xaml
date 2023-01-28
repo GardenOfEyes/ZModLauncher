@@ -257,7 +257,7 @@
                                 Data="{TemplateBinding Icon}"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                Width="23" />
+                                Width="{TemplateBinding IconWidth}" />
 
                             <TextBlock
                                 Grid.Column="1"
