@@ -23,11 +23,6 @@ public class LauncherUpdater
     {
         var configManager = new LauncherConfigManager();
         bool.TryParse(configManager.LauncherConfig[IsLauncherOfflineForMaintenanceKey]?.ToString(), out bool isOffline);
-        if (isOffline)
-        {
-            ShowInformationDialog(LauncherMaintenanceMessage);
-            Environment.Exit(0);
-        }
         while (true)
         {
             var backupLauncherExecutableDir = $"{NativeManifest.AppRootPath}\\launcher_backup";
@@ -67,6 +62,11 @@ public class LauncherUpdater
                 Application.Current.Shutdown();
             }
             break;
+        }
+        if (isOffline)
+        {
+            ShowInformationDialog(LauncherMaintenanceMessage);
+            Environment.Exit(0);
         }
     }
 }
