@@ -16,7 +16,7 @@ public partial class SignInPage : Page
     public SignInPage()
     {
         InitializeComponent();
-        LauncherVersion = "1.2.4";
+        LauncherVersion = "1.2.5";
     }
 
     public string LauncherVersion

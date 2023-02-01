@@ -627,6 +627,7 @@ public class LibraryManager
                 }
                 else mod.UpdateFiles.Add(zipFile.PathDisplay);
             }
+            mod.UpdateFiles.Sort();
             if (_modsDbManager.Database == null || mod.Uri == null) return (T)(object)mod;
             JToken modEntry = _modsDbManager.Database.GetValue(mod.Name, StringComparison.OrdinalIgnoreCase);
             Uri modInfoUri = GetAbsoluteUri(modEntry?[ModsDatabaseModInfoUriKey]?.ToString());
@@ -697,9 +698,10 @@ public class LibraryManager
                     if (mod.Uri != null)
                     {
                         string modFileDir = Path.GetFileNameWithoutExtension(mod.Uri);
-                        if (mod.Version != null) modFileDir = mod.GetModFileDirWithoutVersion(modFileDir);
-                        mod.LocalPath = mod.IsLaunchable ? $"{item.LocalPath}\\{modFileDir}" : $"{item.LocalPath}\\LauncherMods\\{modFileDir}";
+                        if (mod.Version != null) mod.GetModFileDirWithoutVersion(modFileDir);
+                        string execDir = Path.GetDirectoryName(mod.ExecutablePath);
                         mod.ExecutablePath = mod.IsLaunchable ? $"{FocusedGame.LocalPath}\\{mod.ExecutablePath}" : $"{mod.LocalPath}\\{mod.ExecutablePath}";
+                        mod.LocalPath = mod.IsLaunchable ? $"{item.LocalPath}\\{execDir}" : $"{item.LocalPath}\\LauncherMods\\{execDir}";
                         if (mod.NativeToggleMacroPath != null) mod.NativeToggleMacroPath = $"{mod.LocalPath}\\{mod.NativeToggleMacroPath}";
                         mod.Configure(FocusedGame);
                     }
