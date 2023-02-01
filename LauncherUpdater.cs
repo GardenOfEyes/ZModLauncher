@@ -36,14 +36,14 @@ public class LauncherUpdater
             if (_fileManager.Files == null)
             {
                 if (ShowYesNoErrorDialog(InternetConnectionError) == MessageBoxResult.Yes) continue;
-                return;
+                break;
             }
             Metadata updateFile = _fileManager.Files.FirstOrDefault(i => i.Name.Contains(NativeManifest.ExecutableAppName) && i.Name.EndsWith(".exe"));
-            if (updateFile == null) return;
+            if (updateFile == null) break;
             string[] nameTokens = AssertExtractPathTokens(updateFile.Name, 2, '_');
-            if (nameTokens == null) return;
+            if (nameTokens == null) break;
             Version.TryParse(Path.GetFileNameWithoutExtension(nameTokens[1]), out Version updateFileVersion);
-            if (updateFileVersion == null) return;
+            if (updateFileVersion == null) break;
             if (_currentLauncherVersion < updateFileVersion)
             {
                 Stream stream = await (await _fileManager.DownloadFile(updateFile.PathDisplay)).GetContentAsStreamAsync();

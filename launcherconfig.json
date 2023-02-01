@@ -1,16 +1,16 @@
 {
-	"DropboxRefreshToken": "pYI2k6XPE88AAAAAAAAAAY65xun7FurJ2IqLXThCzMFLlzhTAs6bUAIDp9xohojQ",
-	"DropboxClientId": "8xwhtxq7188msf3",
-	"DropboxClientSecret": "eod7kzbv3adxtev",
+	"DropboxRefreshToken": "TiwkZCsVopMAAAAAAAAAATDwUqqBMlpXPQTqkFN0vX1-GIdR3oEl_VU4PpdsE7vC",
+	"DropboxClientId": "e44bp49odtnbm89",
+	"DropboxClientSecret": "8k60r7hpvbc5fz8",
 	"PatreonClientId": "",
 	"PatreonClientSecret": "",
 	"PatreonCreatorUrl": "",
 	"PatreonRedirectUri": "",
-	"YouTubeResourceLink": "https://www.youtube.com/channel/UCCO5U3aJJHXwktWHNGAsTrQ",
+	"YouTubeResourceLink": "",
 	"TwitterResourceLink": "",
 	"RoadmapResourceLink": "https://trello.com/b/CUk6PqKu/zmodlauncher",
-	"FAQResourceLink": "https://www.patreon.com/posts/77757085?pr=true",
-	"PrepareLauncherMessage": "PREPARING THE ROARING FORGE MOD LAUNCHER",
+	"FAQResourceLink": "",
+	"PrepareLauncherMessage": "PREPARING THE FROMSOFT TOOLS LAUNCHER",
 	"RejectTierId": "",
-	"IsLauncherOfflineForMaintenance": false
+	"IsLauncherOfflineForMaintenance": true
 }
