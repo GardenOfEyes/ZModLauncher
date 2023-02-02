@@ -700,8 +700,8 @@ public class LibraryManager
                         string modFileDir = Path.GetFileNameWithoutExtension(mod.Uri);
                         if (mod.Version != null) modFileDir = mod.GetModFileDirWithoutVersion(modFileDir);
                         string execDir = Path.GetDirectoryName(mod.ExecutablePath);
-                        if (execDir != null && execDir.EndsWith(modFileDir)) execDir = execDir.Replace($"{modFileDir}", "");
-                        mod.LocalPath = mod.IsLaunchable ? $"{item.LocalPath}\\{execDir}{modFileDir}" : $"{item.LocalPath}\\LauncherMods\\{modFileDir}";
+                        if (execDir == "") execDir = modFileDir;
+                        mod.LocalPath = mod.IsLaunchable ? $"{item.LocalPath}\\{execDir}" : $"{item.LocalPath}\\LauncherMods\\{modFileDir}";
                         mod.ExecutablePath = mod.IsLaunchable ? $"{FocusedGame.LocalPath}\\{mod.ExecutablePath}" : $"{mod.LocalPath}\\{mod.ExecutablePath}";
                         if (mod.NativeToggleMacroPath != null) mod.NativeToggleMacroPath = $"{mod.LocalPath}\\{mod.NativeToggleMacroPath}";
                         mod.Configure(FocusedGame);
