@@ -1,16 +1,16 @@
 {
-	"DropboxRefreshToken": "TiwkZCsVopMAAAAAAAAAATDwUqqBMlpXPQTqkFN0vX1-GIdR3oEl_VU4PpdsE7vC",
-	"DropboxClientId": "e44bp49odtnbm89",
-	"DropboxClientSecret": "8k60r7hpvbc5fz8",
+	"DropboxRefreshToken": "FhCrkHA9IjgAAAAAAAAAAQ_CNLw--_ZEcQwVChhtjG9HoaURs4-aIcP1Wb1o9Hwk",
+	"DropboxClientId": "y32c4q35n3b06a3",
+	"DropboxClientSecret": "7pat6t8tg3zv4wf",
 	"PatreonClientId": "",
-	"PatreonClientSecret": "",
-	"PatreonCreatorUrl": "",
-	"PatreonRedirectUri": "",
-	"YouTubeResourceLink": "",
-	"TwitterResourceLink": "",
+	"PatreonClientSecret": "u6Thd77VEq4sNbco-ZahsBqjuzVY762yrhixlqMQnK664AipI6KWUZS_gq2hJXgA",
+	"PatreonCreatorUrl": "https://www.patreon.com/GardenOfEyes",
+	"PatreonRedirectUri": "https://thegardenofeyes.com",
+	"YouTubeResourceLink": "https://www.youtube.com/@GardenOfEyes",
+	"TwitterResourceLink": "https://twitter.com/eyesgarden",
 	"RoadmapResourceLink": "https://trello.com/b/CUk6PqKu/zmodlauncher",
-	"FAQResourceLink": "",
-	"PrepareLauncherMessage": "PREPARING THE FROMSOFT TOOLS LAUNCHER",
-	"RejectTierId": "",
-	"IsLauncherOfflineForMaintenance": true
+	"FAQResourceLink": "https://docs.google.com/document/d/1ahVht0H7uVp9AvAMRE3e9Z9FGCmQzjaJNPNBXL-0sRI/edit?usp=sharing",
+	"PrepareLauncherMessage": "PREPARING THE GARDEN OF EYES MOD LAUNCHER",
+	"RejectTierId": "6300254",
+	"IsLauncherOfflineForMaintenance": false
 }
